@@ -54,6 +54,39 @@ def rail_fence_decode(string, key):
     post: function returns a single string that is decoded with
         rail fence algorithm
     """
+    lst1 = []
+    for _ in range(key):
+        row = [''] * len(string)
+        lst1.append(row)
+    rows =0
+    direction =1
+
+    for col in range(len(string)):
+        lst1[rows][col]= '*'
+        if rows == 0:
+            direction = 1
+        if rows == key-1:
+            direction = -1
+        rows += direction 
+
+    z = 0
+    for row in lst1:
+        for c in range(len(string)):
+            if z < len(string) and row[c] == '*':
+                row[c] = string[z]
+                z += 1
+    decode = ''
+    rows = 0
+    direction = 0
+    for col in range(len(string)):
+        decode +=lst1[rows][col]
+        if rows == 0:
+            direction = 1
+        if rows == key-1:
+            direction = -1
+        rows += direction 
+
+    return decode
 
 def filter_string(string):
     """
