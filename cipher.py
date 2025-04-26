@@ -2,7 +2,7 @@
 Student information for this assignment:
 
 Replace <FULL NAME> with your name.
-On my/our honor, Hana Aly and <FULL NAME>, this
+On my/our honor, Hana Aly and Sarojini Malladi, this
 programming assignment is my own work and I have not provided this code to
 any other student.
 
@@ -13,11 +13,9 @@ code to someone else), the case shall be submitted to the Office of the Dean of
 Students. Academic penalties up to and including an F in the course are likely.
 
 UT EID 1: ha25476
-UT EID 2:
+UT EID 2: sdm3993
 """
 
-
-# TODO: implement this function. You may delete this comment after you are done.
 def rail_fence_encode(string, key):
     """
     pre: string is a string of characters and key is a positive
@@ -30,25 +28,22 @@ def rail_fence_encode(string, key):
     for _ in range(key):
         row = [''] * len(string)
         lst1.append(row)
-    rows =0
-    direction =1
+    rows = 0
+    direction = 1
 
     for col, j in enumerate(string):
-        lst1[rows][col]= j
+        lst1[rows][col] = j
         if rows == 0:
             direction = 1
-        if rows == key-1:
+        if rows == key - 1:
             direction = -1
-        rows += direction 
+        rows += direction
     encode = ""
     for rows in lst1:
         for i in rows:
             if i != '':
                 encode += i
     return encode
-
-
-
 
 # TODO: implement this function. You may delete this comment after you are done.
 def rail_fence_decode(string, key):
@@ -60,8 +55,6 @@ def rail_fence_decode(string, key):
         rail fence algorithm
     """
 
-
-# TODO: implement this function. You may delete this comment after you are done.
 def filter_string(string):
     """
     pre: string is a string of characters
@@ -69,14 +62,12 @@ def filter_string(string):
         removes all digits, punctuation marks, and spaces. It
         returns a single string with only lower case characters
     """
-    filter_string= ""
+    filtered_str = ""
     for i in string:
         if i.isalpha():
-            filter_string += i.lower()
-    return filter_string
+            filtered_str += i.lower()
+    return filtered_str
 
-
-# TODO: implement this function. You may delete this comment after you are done.
 def encode_character(p, s):
     """
     pre: p is a character in the pass phrase and s is a character
@@ -88,13 +79,11 @@ def encode_character(p, s):
     p_character = ord(p) - ord('a')
 
     sums = s_character + p_character
-    val = sums%26
+    val = sums % 26
 
     character = chr(val + ord('a'))
     return character
 
-
-# TODO: implement this function. You may delete this comment after you are done.
 def decode_character(p, s):
     """
     pre: p is a character in the pass phrase and s is a character
@@ -105,12 +94,11 @@ def decode_character(p, s):
     s_character = ord(s) - ord('a')
     p_character = ord(p) - ord('a')
 
-    difference = s_character - p_character
-    val = difference%26
+    diff = (s_character - p_character) + 26
+    val = diff % 26
 
     character = chr(val + ord('a'))
     return character
-
 
 # TODO: implement this function. You may delete this comment after you are done.
 def vigenere_encode(string, phrase):
