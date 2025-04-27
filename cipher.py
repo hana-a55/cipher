@@ -1,3 +1,4 @@
+
 """
 Student information for this assignment:
 
@@ -83,8 +84,7 @@ def rail_fence_decode(string, key):
             direction = 1
         if rows == key-1:
             direction = -1
-        rows += direction 
-
+        rows += direction
     return decode
 
 def filter_string(string):
