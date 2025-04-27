@@ -132,7 +132,6 @@ def decode_character(p, s):
     character = chr(val + ord('a'))
     return character
 
-# TODO: implement this function. You may delete this comment after you are done.
 def vigenere_encode(string, phrase):
     """
     pre: string is a string of characters and phrase is a pass phrase
@@ -172,33 +171,38 @@ def vigenere_decode(string, phrase):
             index += 1
     return ''.join(lsts)
 
-# TODO: implement this function. You may delete this comment after you are done.
 def main():
     """Main function that reads stdin and runs each cipher"""
     # read the plain text from stdin (terminal/input)
-
+    print("Rail Fence Cipher")
+    rail_plain_txt = input("Plain Text:")
     # read the key from stdin (terminal/input)
-
+    rail_plain_key = int(input("Key:"))
     # encrypt and print the encoded text using rail fence cipher
-
+    rail_plain_encoded = rail_fence_encode(rail_plain_txt, rail_plain_key)
+    print(f"Encoded Text: {rail_plain_encoded}")
     # read encoded text from stdin (terminal/input)
-
+    rail_encoded_txt = input("Encoded Text:")
     # read the key from stdin (terminal/input)
-
+    rail_encoded_txt_key = int(input("Key:"))
     # decrypt and print the plain text using rail fence cipher
-
+    rail_decoded_txt = rail_fence_decode(rail_encoded_txt, rail_encoded_txt_key)
+    print(f"Decoded Text: {rail_decoded_txt}")
     # read the plain text from stdin (terminal/input)
-
+    print("Vigenere Cipher")
+    vig_plain_txt = input("Plain Text:")
     # read the pass phrase from stdin (terminal/input)
-
+    vig_plain_key = int(input("Key:"))
     # encrypt and print the encoded text using Vigenere cipher
-
+    vig_plain_encoded = vigenere_encode(vig_plain_txt, vig_plain_key)
+    print(f"Encoded Text: {vig_plain_encoded}")
     # read the encoded text from stdin (terminal/input)
-
+    vig_encoded_text = input("Encoded Text:")
     # read the pass phrase from stdin (terminal/input)
-
+    vig_encoded_txt_key = int(input("Key:"))
     # decrypt and print the plain text using Vigenere cipher
-
+    vig_decoded_txt = vigenere_decode(vig_encoded_text, vig_encoded_txt_key)
+    print(f"Decoded Text: {vig_decoded_txt}")
 
 # Do NOT modify the following code.
 if __name__ == "__main__":
