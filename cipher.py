@@ -38,14 +38,13 @@ def rail_fence_encode(string, key):
         if rows == key - 1:
             direction = -1
         rows += direction
-    encode = ""
+    encode = ''
     for rows in lst1:
         for i in rows:
             if i != '':
                 encode += i
     return encode
 
-# TODO: implement this function. You may delete this comment after you are done.
 def rail_fence_decode(string, key):
     """
     pre: string is a string of characters and key is a positive
@@ -58,8 +57,8 @@ def rail_fence_decode(string, key):
     for _ in range(key):
         row = [''] * len(string)
         lst1.append(row)
-    rows =0
-    direction =1
+    rows = 0
+    direction = 1
 
     for col in range(len(string)):
         lst1[rows][col]= '*'
@@ -67,7 +66,7 @@ def rail_fence_decode(string, key):
             direction = 1
         if rows == key-1:
             direction = -1
-        rows += direction 
+        rows += direction
 
     z = 0
     for row in lst1:
@@ -95,7 +94,7 @@ def filter_string(string):
         removes all digits, punctuation marks, and spaces. It
         returns a single string with only lower case characters
     """
-    filtered_str = ""
+    filtered_str = ''
     for i in string:
         if i.isalpha():
             filtered_str += i.lower()
@@ -140,43 +139,38 @@ def vigenere_encode(string, phrase):
     post: function returns a single string that is encoded with
         Vigenere algorithm
     """
-    lsts= []
+    lsts = []
+    index = 0
+    if not string:
+        return ''
+    if not phrase:
+        return string
+    for char in string:
+        if char.isalpha():
+            key = phrase[index % len(phrase)]
+            lsts.append(encode_character(key, char))
+            index += 1
+    return ''.join(lsts)
 
-    number = (len(string) // len(phrase))
-    a = phrase * number
-    length = phrase[:len(string) % len(phrase)]
-    total = a + length
-
-    for i, s in enumerate(string):
-        lsts.append(encode_character(total[i],s))
-
-    return "".join(lsts)
-
-
-# TODO: implement this function. You may delete this comment after you are done.
 def vigenere_decode(string, phrase):
     """
     pre: string is a string of characters and phrase is a pass phrase
     post: function returns a single string that is decoded with
         Vigenere algorithm
     """
-    lsts= []
+    lsts = []
+    index = 0
 
     if not string:
         return ''
     if not phrase:
-        return string 
-    
-    number = (len(string) // len(phrase))
-    a = phrase * number
-    length = phrase[:len(string) % len(phrase)]
-    total = a + length
-
-    for i, s in enumerate(string):
-        lsts.append(decode_character(total[i], s))
-
-    return "".join(lsts)
-
+        return string
+    for char in string:
+        if char.isalpha():
+            key = phrase[index % len(phrase)]
+            lsts.append(decode_character(key, char))
+            index += 1
+    return ''.join(lsts)
 
 # TODO: implement this function. You may delete this comment after you are done.
 def main():
